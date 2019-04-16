@@ -1,0 +1,115 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background-color: linen;
+}
+
+td {
+    border-top-style: solid;
+}
+</style>
+</head>
+<body>
+
+<table style="width:100%">
+  <tr style="font-weight:bold; background-color: orange">
+    <td width="300px">Single-instance version cases</td>
+    <td>Graph Results Screenshot</td>
+    <td>Average Query Time(ms)</td>
+    <td>Average Search Servlet Time(ms)</td>
+    <td>Average JDBC Time(ms)</td>
+    <td>Analysis</td>
+  </tr>
+  <tr>
+    <td>Case 1: HTTP/1 thread</td>
+    <td><img src="graph_results_case1.png" alt="Graph Results Screenshot Case 1" style="width:304px;height:228px;"></td>
+    <td>251</td>
+    <td>129.37813021364744</td>
+    <td>128.5785195515841</td>
+    <td>This is an expected result since there is only one user being simulated in a single server.</td>
+  </tr>
+  <tr>
+    <td>Case 2: HTTP/10 threads</td>
+    <td><img src="graph_results_case2.png" alt="Graph Results Screenshot Case 2" style="width:304px;height:228px;"></td>
+    <td>1247</td>
+    <td>1158.828846264419</td>
+    <td>1028.5412385873274</td>
+    <td>This result highlights the importance of load balancing in a server. You can see that the average
+    query time is very high, it skyrocketed from a single thread.</td>
+  </tr>
+  <tr>
+    <td>Case 3: HTTPS/10 threads</td>
+    <td><img src="graph_results_case3.png" alt="Graph Results Screenshot Case 3" style="width:304px;height:228px;"></td>
+    <td>1347</td>
+    <td>1123.214944806255</td>
+    <td>1059.8857054524776</td>
+    <td>Like the last result, it seems as though https makes the overall queries a bit slower.</td>
+  </tr>
+  <tr>
+    <td>Case 4: HTTP/10 threads/No prepared statements</td>
+    <td><img src="graph_results_case4.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>1258</td>
+    <td>1197.2645615320878</td>
+    <td>924.3150985178717</td>
+    <td>Here, not using prepared statements makes a small a big difference when it comes to the execution of the queries.</td>
+  </tr>
+  <tr>
+    <td>Case 5: HTTP/10 threads/No connection pooling</td>
+    <td><img src="graph_results_case5.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>1256</td>
+    <td>1195.8559086161656</td>
+    <td>1049.2647684638505</td>
+    <td>This case and case 4 are very similar. It seems as though connection pooling does not have too much of an effect on the overall query time.</td>
+  </tr>
+
+</table> 
+
+
+<table style="width:100%">
+  <tr style="font-weight:bold; background-color: orange">
+    <td width="300px">Scaled version cases</td>
+    <td>Graph Results Screenshot</td>
+    <td>Average Query Time(ms)</td>
+    <td>Average Search Servlet Time(ms)</td>
+    <td>Average JDBC Time(ms)</td>
+    <td>Analysis</td>
+  </tr>
+  <tr>
+    <td>Case 1: HTTP/1 thread</td>
+    <td><img src="scaled_graph_results_case1.png" alt="Graph Results Screenshot Case 1" style="width:304px;height:228px;"></td>
+    <td>288</td>
+    <td>128.99859780503655</td>
+    <td>128.48090662225832</td>
+    <td>This is an expected result, we are only simulating one user so load balancing isnt being used much here.</td>
+  </tr>
+  <tr>
+    <td>Case 2: HTTP/10 threads</td>
+    <td><img src="scaled_graph_results_case2.png" alt="Graph Results Screenshot Case 2" style="width:304px;height:228px;"></td>
+    <td>409</td>
+    <td>298.91043092445165</td>
+    <td>297.4912430938262</td>
+    <td>Now we start to see the real power of load balancing. The average query time has drastically gone down and has made query executions faster.</td>
+  </tr>
+  <tr>
+    <td>Case 3: HTTP/10 threads/No prepared statements</td>
+    <td><img src="scaled_graph_results_case3.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>691</td>
+    <td>598.160412303818</td>
+    <td>584.6185567112103</td>
+    <td>In this case, the use of no prepared statements has actually caused query times to go up. </td>
+  </tr>
+  <tr>
+    <td>Case 4: HTTP/10 threads/No connection pooling</td>
+    <td><img src="scaled_graph_results_case4.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>654</td>
+    <td>717.3240115215272</td>
+    <td>712.7188360625507</td>
+    <td>Lastly, no connection pooling has also affected the query times here. This case though there is a drastic increase in the TS and TJ times.</td>
+  </tr>
+
+</table> 
+
+</body>
+</html>

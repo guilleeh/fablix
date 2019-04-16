@@ -1,0 +1,21 @@
+Query for Main Page - returns 20 movies with highest ratings
+#############
+select t1.id, t1.title, t1.year, t1.director, t2.genre, t1.star, t3.rating from ((select m.*, group_concat(s.name separator ', ') as star
+from movies m, stars s, stars_in_movies sm 
+where m.id = sm.movieId and s.id = sm.starId  
+group by m.id, m.title, m.year, m.director) t1 
+inner join 
+(select gm.movieId , group_concat(g.name separator ', ') as genre
+from movies m, genres g, genres_in_movies gm
+where m.id = gm.movieId and g.id = gm.genreId 
+group by m.id) as t2
+on t1.id = t2.movieId)
+
+inner join
+
+(select m.id, r.rating from movies m, ratings r where m.id = r.movieId order by r.rating desc limit 20) as t3
+
+on t1.id = t3.id
+order by t3.rating desc;
+#############
+

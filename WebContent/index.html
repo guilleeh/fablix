@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
+    	  integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    	  
+    <link rel="stylesheet" href="index.css">
+    	  
+   	<style>
+		li {
+		  display:inline;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	      <div class="container">
+	        <a class="navbar-brand" href="#">Fabflix</a>
+	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+	          <span class="navbar-toggler-icon"></span>
+	        </button>
+	
+	        <div class="collapse navbar-collapse" id="navbarsExample07">
+	          <ul class="navbar-nav mr-auto">
+	            <li class="nav-item active">
+	              <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+	            </li>
+	            <li class="nav-item active">
+	              <a class="nav-link" id="movie_page" href="./movies.html?page=1&results=10&sort_by=rating_desc">Movies</a>
+	            </li>
+	          </ul>
+				<div class="input-group col-md-4">
+				      <input class="form-control py-2" type="search" placeholder="search" id="search-bar">
+				      <span class="input-group-append autocomplete-searchbox">
+				        <button class="btn btn-outline-secondary" type="button" id="search_button">
+				            <i class="fa fa-search"></i>
+				        </button>
+				      </span>
+				</div>
+				<div class="btn-group">
+				    <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    <i class="fas fa-database"></i>
+				    </button>
+					<div class="dropdown-menu" id="submit_form">
+					  <form class="px-3 py-2" method="get" action="./movies.html">
+					    <div class="form-group">
+					      <label for="">Title</label>
+					      <input type="text" class="form-control" name="title" id="title" placeholder="Title...">
+					    </div>
+					    <div class="form-group">
+					      <label for="">Year</label>
+					      <input type="text" class="form-control" name="year" id="year" placeholder="Year...">
+					    </div>
+					    <div class="form-group">
+					      <label for="">Director</label>
+					      <input type="text" class="form-control" name="director" id="director" placeholder="Director...">
+					    </div>
+					    <div class="form-group">
+					      <label for="">Star</label>
+					      <input type="text" class="form-control" name="star" id="star" placeholder="Star...">
+					      <input type="hidden" class="form-control" name="page" id="page" value="1">
+					      <input type="hidden" class="form-control" name="results" id="results" value="10">
+					      <input type="hidden" class="form-control" name="sort_by" id="sort" value="rating_desc">
+					    </div>
+					    <button type="submit" class="btn btn-primary ">Submit</button>
+					  </form>
+					</div>
+				</div>
+	          <button class="btn btn-link pr-3" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-filter"></i></button>
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLongTitle">Genres</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				      	<div class="container">
+				      		<ul id="genres" class="pl-0">
+				      		</ul>
+				      	</div>
+				      </div>
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLongTitle">Titles</h5>
+				      </div>
+				      <div class="modal-body">
+				      	<div class="container">
+					      	<ul id="titles" class="pl-0">	
+					      	</ul>
+					    </div>
+				      </div>				      
+				    </div>
+				  </div>
+				</div>
+	        </div>
+	        <a href='./cart.html'><button type="button" class="btn btn-info"><i class="fas fa-shopping-cart"></i>Cart</button></a>
+	      </div>
+	    </nav>
+	</header>	
+	
+	<!-- main -->
+	
+	<main role="main">
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Hello there.</h1>
+          <p>Seems like you're in the mood to watch some movies. 
+          Fabflix offers one of the most vast libraries of movies to watch from the comfort of your very own home.
+          Grab some popcorn, recline that chair, and enjoy a movie from our diverse collection that we have to offer.</p>
+          <p><a class="btn btn-primary btn-lg" href="#" role="button">View movies &raquo;</a></p>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col">
+            <h2>Best rated</h2>
+            <!-- Hard-code hyperlink to top rated movies? Need to hardcode button -->
+            <p>Don't know what to watch? Wondering what others thought was a good movie?
+            Browse through our catalog by rating! Enjoy top-rated movies such as Loma Lynda: Episode II
+            and Addo: The King of the Beasts, without the worry of wasting your time with a subpar movie. </p>
+            <p><a class="btn btn-secondary" href="#" role="button">View by rating &raquo;</a></p>
+          </div>
+          <div class="col">
+            <h2>A-Z</h2>
+            <p>Feelings adventurous? Even if you've already watched the best hundred movies,
+            give the rest of our catalog a look. With the <em>vast</em> array of movies in our collection,
+            there's bound to be something to suit your needs.s </p>
+            <p><a class="btn btn-secondary" href="#" role="button">View alphabetically &raquo;</a></p>
+          </div>
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+	<!-- main -->	
+	<!-- Load jQuery and Bootstrap JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.7/jquery.autocomplete.min.js"></script>
+	
+
+	<script src="index.js"></script>
+
+</body>
+</html>

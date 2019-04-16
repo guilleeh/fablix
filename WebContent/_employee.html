@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
+    	  integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    	  
+   	<style>
+		li {
+		  display:inline;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	      <div class="container">
+	        <a class="navbar-brand" href="#">Fabflix Employee</a>
+	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+	          <span class="navbar-toggler-icon"></span>
+	        </button>
+	    </nav>
+	</header>	
+	
+	<!-- main -->
+	
+	<main role="main">
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Welcome.</h1>
+          <p>All your needs for managing the Fablix database are right at your fingertips.</p>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col">
+            <h2>Add a Star</h2>
+            <form class="px-3 py-2" method="get" action="./_employee.html">
+			  <div class="form-group">
+			    <label for="starInput">Star name</label>
+			    <input type="text" class="form-control" name="star" id="starInput" placeholder="Enter star's name" required>
+			  </div>
+			  <div class="form-group">
+			    <label for="starYear">Birth year</label>
+			    <input type="number" class="form-control" name="year" id="starYear" aria-describedby="yearHelp"placeholder="Enter star's birth year (optional)">
+			  </div>
+			  <input type="hidden" class="form-control" name="type" id="page" value="star">
+			  <button type="submit" id="star_submit" class="btn btn-primary">Submit</button>
+			</form>
+			<div>
+				<div class="jumbotron" id="add_single_star">
+				</div>
+			</div>
+          </div>
+          <div class="col">
+            <h2>Add a Movie</h2>
+            <form class="px-3 py-2" method="get" action="./_employee.html">
+            	<div class="row">
+            		<div class="form-group">
+				    	<label for="movieID">Movie ID</label>
+				    	<input type="number" class="form-control" id="movieID" placeholder="Enter movie ID" required>
+					</div>
+					<div class="form-group">
+						<label for="movieTitle">Movie Title</label>
+						<input type="text" class="form-control" id="movieTitle" placeholder="Enter movie title" required>
+					</div>
+            	</div>
+	            <div class="row">
+		            <div class="form-group">
+					    <label for="movieYear">Movie year</label>
+					    <input type="number" class="form-control" id="movieYear" placeholder="Enter movie year" required>
+					</div>
+					<div class="form-group">
+						<label for="movieDirector">Movie Director</label>
+						<input type="text" class="form-control" id="movieDirector" placeholder="Enter movie director" required>
+					</div>
+	            </div>
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+			<div>
+				<div class="jumbotron" id="add_single_movie">
+				</div>
+			</div>
+          </div>
+        </div>
+        <hr>
+      </div> <!-- /container -->
+            <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col">
+            <h2>Database Metadata</h2>
+	            <div>
+					<div class="jumbotron" id="db_table">
+					</div>
+				</div>
+          </div>
+        </div>
+        <hr>
+      </div> <!-- /container -->
+
+    </main>
+	<!-- main -->	
+	<!-- Load jQuery and Bootstrap JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script src="_employee.js"></script>
+
+</body>
+</html>
